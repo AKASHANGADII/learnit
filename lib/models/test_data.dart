@@ -1,8 +1,9 @@
 class TestHistoryItem{
+
   final String number;
-  final String score;
-  final String totalScore;
+  final int score;
+  final int totalScore;
   final DateTime date;
 
-  TestHistoryItem(this.number, this.score, this.totalScore, this.date);
+  TestHistoryItem({required this.number,required this.score,required this.totalScore,required this.date});
 }

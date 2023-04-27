@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:learnit/views/screens/home_screen.dart';
 
 
 class AuthenticationScreen extends StatelessWidget {
@@ -31,7 +32,7 @@ class AuthenticationScreen extends StatelessWidget {
       },
       actions: [
         AuthStateChangeAction<SignedIn>((context, signedIn) async {
-          //TODO: Go to home screen
+          Get.toNamed(HomeScreen.routeName);
         }),
       ],
     );
