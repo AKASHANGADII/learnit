@@ -45,6 +45,10 @@ dependencies:
   percent_indicator: ^4.2.3
   carousel_slider: ^4.2.1
   focused_menu: ^1.0.5
+  record_mp3: ^3.0.0
+  permission_handler: ^10.2.0
+  audioplayers: ^4.0.1
+  firebase_storage: ^11.1.1
 
 dev_dependencies:
   flutter_test:
