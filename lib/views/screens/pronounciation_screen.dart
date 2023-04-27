@@ -22,10 +22,27 @@ class _PronounciationScreenState extends State<PronounciationScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Pronounciation Screen'),
+        appBar: PreferredSize(
+          preferredSize:
+          Size(double.infinity, MediaQuery.of(context).size.height * 0.08),
+          child: Center(
+            child: Column(
+              children: [
+                SafeArea(
+                  child: Text(
+                    "Learn IT",
+                    style: GoogleFonts.podkova(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 38),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
         body: Column(children: [
+          Divider(color: Colors.red,),
           Padding(
             padding: const EdgeInsets.only(top: 20.0),
             child: Text(

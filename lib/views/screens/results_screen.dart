@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:learnit/services/openai_service.dart';
 import 'package:learnit/utils/data.dart';
 import 'package:learnit/utils/neo_box_decoration.dart';
@@ -38,8 +39,24 @@ class _ResultsScreenState extends State<ResultsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Results"),
+      appBar: PreferredSize(
+        preferredSize:
+        Size(double.infinity, MediaQuery.of(context).size.height * 0.08),
+        child: Center(
+          child: Column(
+            children: [
+              SafeArea(
+                child: Text(
+                  "Learn IT",
+                  style: GoogleFonts.podkova(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 38),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       body: isLoading
           ? Center(
@@ -49,6 +66,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
+                  Divider(color: Colors.red,),
                   // CircularPercentIndicator(
                   //   radius: 40,
                   //   percent: totalScore != 0

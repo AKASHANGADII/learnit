@@ -11,6 +11,7 @@ import 'package:learnit/utils/neo_box_decoration.dart';
 import 'package:learnit/views/screens/contact_screen.dart';
 import 'package:learnit/views/screens/pronounciation_screen.dart';
 import 'package:learnit/views/screens/quiz_screen.dart';
+import 'package:learnit/views/screens/quiz_screen_2.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:learnit/models/test_data.dart';
 
@@ -31,15 +32,14 @@ class HomeScreen extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              SizedBox(
-                height: 40,
-              ),
-              Text(
-                "Learn IT",
-                style: GoogleFonts.podkova(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 40),
+              SafeArea(
+                child: Text(
+                  "Learn IT",
+                  style: GoogleFonts.podkova(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 38),
+                ),
               ),
             ],
           ),
@@ -52,11 +52,11 @@ class HomeScreen extends StatelessWidget {
           children: [
             Divider(color: Colors.red,),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             Text("POS Test History", style: GoogleFonts.poppins(fontSize: 20,),textAlign: TextAlign.center,),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             StreamBuilder(
               stream: FirebaseFirestore.instance
@@ -69,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                   print(snapshot.data!.docs[0]["id"]);
                   List testHistoryList = snapshot.data!.docs;
                   return CarouselSlider(
-                    options: CarouselOptions(height: 150),
+                    options: CarouselOptions(height: 155),
                     items: testHistoryList.map((testElement) {
                       return Builder(
                         builder: (BuildContext context) {
@@ -79,39 +79,36 @@ class HomeScreen extends StatelessWidget {
                             child: Container(
                               margin: const EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 5),
-                              padding: EdgeInsets.all(8),
+                              padding: EdgeInsets.all(12),
                               decoration: neumorphicDecoration(20),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text("Test " + testElement["id"].toString(), style: GoogleFonts.poppins(fontSize: 25),),
-                                        Text(DateFormat.yMMMd()
-                                            .format(testElement["date"].toDate())
-                                            .toString(), style: GoogleFonts.poppins(fontSize: 15),),
-                                        Text(testElement["remark"], style: GoogleFonts.poppins(fontSize: 25, color: (testElement["remark"]=="Bad") ? Colors.red : Colors.green ),),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      width: 20,
-                                    ),
-                                    CircularPercentIndicator(
-                                      center: Text(
-                                          "${testElement["obtained"]}/${testElement["total"]}"),
-                                      percent: testElement["obtained"] == "0"
-                                          ? 0
-                                          : testElement["obtained"] /
-                                          testElement["total"],
-                                      radius: 30,
-                                    )
-                                  ],
-                                ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text("Test " + testElement["id"].toString(), style: GoogleFonts.poppins(fontSize: 23),),
+                                      Text(DateFormat.yMMMd()
+                                          .format(testElement["date"].toDate())
+                                          .toString(), style: GoogleFonts.poppins(fontSize: 13),),
+                                      Text(testElement["remark"], style: GoogleFonts.poppins(fontSize: 19, color: (testElement["remark"]=="Bad") ? Colors.red : Colors.green ),),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    width: 20,
+                                  ),
+                                  CircularPercentIndicator(
+                                    center: Text(
+                                        "${testElement["obtained"]}/${testElement["total"]}"),
+                                    percent: testElement["obtained"] == "0"
+                                        ? 0
+                                        : testElement["obtained"] /
+                                        testElement["total"],
+                                    radius: 30,
+                                  )
+                                ],
                               ),
                             ),
                           );
@@ -156,9 +153,9 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 NewTestOptionButton(
-                  label: "Learn Words",
+                  label: "Parts of speech 2",
                   onPressed: () {
-                    //TODO:Navigate to test screen
+                    Get.to(QuizScreen2());
                   },
                 ),
                 NewTestOptionButton(
@@ -188,8 +185,8 @@ class NewTestOptionButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         padding: EdgeInsets.all(10),
-        height: 150,
-        width: 150,
+        height: 130,
+        width: 160,
         decoration: neumorphicDecoration(20),
         child: Center(
             child: Text(

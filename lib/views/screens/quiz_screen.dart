@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:focused_menu/focused_menu.dart';
 import 'package:focused_menu/modals.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:learnit/utils/data.dart';
 import 'package:learnit/utils/neo_box_decoration.dart';
 import 'package:learnit/views/screens/results_screen.dart';
@@ -34,7 +35,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   @override
   void initState() {
-    questions = getRandomGroup(questionsData, 2);
+    questions = getRandomGroup(questionsData, 3);
     super.initState();
   }
 
@@ -42,16 +43,33 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     output.add({});
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Quizz"),
+      appBar: PreferredSize(
+        preferredSize:
+            Size(double.infinity, MediaQuery.of(context).size.height * 0.08),
+        child: Center(
+          child: Column(
+            children: [
+              SafeArea(
+                child: Text(
+                  "Learn IT",
+                  style: GoogleFonts.podkova(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 38),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       body: SafeArea(
         child: Column(
           children: [
+            Divider(color: Colors.red,),
             SizedBox(
               height: 20,
             ),
-            Text(questions[curIndex]),
+            Text(questions[curIndex],style: GoogleFonts.poppins(fontWeight: FontWeight.w600,fontSize: 16),),
             SizedBox(
               height: 20,
             ),
@@ -142,7 +160,11 @@ class _QuizScreenState extends State<QuizScreen> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(values,style: TextStyle(fontWeight: FontWeight.bold),),
+                                  Text(
+                                    values,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
                                   if (output[curIndex][values] != null)
                                     Text(" : " + output[curIndex][values]),
                                 ],
@@ -157,9 +179,10 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
             GestureDetector(
               onTap: () {
-                if (curIndex > 0) {
+                //n-2
+                if (curIndex > 1) {
                   print(output);
-                  Get.to(ResultsScreen(questions: questions,answers: output));
+                  Get.to(ResultsScreen(questions: questions, answers: output));
                 } else {
                   setState(() {
                     curIndex = curIndex + 1;
@@ -170,10 +193,10 @@ class _QuizScreenState extends State<QuizScreen> {
                 width: double.infinity,
                 color: Colors.yellow,
                 child: Center(
-                    child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("Next Question"),
-                ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Next Question"),
+                  ),
                 ),
               ),
             )

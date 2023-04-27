@@ -12,6 +12,7 @@ class OpenAiService {
   };
 
   static Future<Map<String,dynamic>> getWordCategories(String sentence) async {
+    Future.delayed(Duration(seconds: 3));
     var data =
         '{"model": "gpt-3.5-turbo","messages": [{"role": "user", "content": "This is the sentence within the brackets - (' + sentence + ') These are the parts of speech categories - Adjective, Adverb, Conjunction, Determiner, Noun, Number, Preposition, Pronoun, Verb. I have to categorise the words into categories based on parts of speech. Please give a json like map with key as individual words and value as the category that word belongs to. Only give the map, please do not add any extra text."}]}';
 
