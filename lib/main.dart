@@ -6,6 +6,7 @@ import 'package:learnit/views/screens/auth_gate.dart';
 import 'package:learnit/views/screens/home_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import 'package:learnit/views/screens/quiz_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
     initializeDateFormatting();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AuthGate(),
+      home:QuizScreen(),
       getPages:[
         GetPage(name: HomeScreen.routeName, page: ()=>HomeScreen()),
       ]
