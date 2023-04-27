@@ -11,9 +11,9 @@ class OpenAiService {
     HttpHeaders.authorizationHeader: 'Bearer $openaiApiKey',
   };
 
-  static Future<String> getWordCategories(String sentence) async {
+  static Future<Map<String,dynamic>> getWordCategories(String sentence) async {
     var data =
-        '{"model": "gpt-3.5-turbo","messages": [{"role": "user", "content": "This is the sentence - (' + sentence + ') These are the parts of speech categories - Adjective, Adverb, Conjunction, Determiner, Noun, Number, Preposition, Pronoun, Verb. I have to categorise the words into categories based on parts of speech. Please give a json like map with key as individual words and value as the category that word belongs to."}]}';
+        '{"model": "gpt-3.5-turbo","messages": [{"role": "user", "content": "This is the sentence within the brackets - (' + sentence + ') These are the parts of speech categories - Adjective, Adverb, Conjunction, Determiner, Noun, Number, Preposition, Pronoun, Verb. I have to categorise the words into categories based on parts of speech. Please give a json like map with key as individual words and value as the category that word belongs to. Only give the map, please do not add any extra text."}]}';
 
     var url = Uri.parse('https://api.openai.com/v1/chat/completions');
     var res = await http.post(url, headers: headers, body: data);
@@ -21,13 +21,10 @@ class OpenAiService {
       throw Exception('http.post error: statusCode= ${res.statusCode}');
     } else {
       var responseJson = jsonDecode(res.body);
-
-      String wordCategoriesMap =
+      String wordCategoriesStr =
           responseJson["choices"][0]["message"]["content"];
-
-      log(wordCategoriesMap);
-
-      return wordCategoriesMap;
+      log(json.decode(wordCategoriesStr).toString());
+      return json.decode(wordCategoriesStr);
     }
   }
 }

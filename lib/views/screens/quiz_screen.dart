@@ -34,7 +34,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   @override
   void initState() {
-    questions = getRandomGroup(questionsData, 1);
+    questions = getRandomGroup(questionsData, 2);
     super.initState();
   }
 
@@ -157,8 +157,9 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
             GestureDetector(
               onTap: () {
-                if (curIndex > -1) {
-                  Get.to(ResultsScreen(questions: questions,answers: output,));
+                if (curIndex > 0) {
+                  print(output);
+                  Get.to(ResultsScreen(questions: questions,answers: output));
                 } else {
                   setState(() {
                     curIndex = curIndex + 1;

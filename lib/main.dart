@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learnit/firebase_options.dart';
+import 'package:learnit/services/openai_service.dart';
 import 'package:learnit/views/screens/auth_gate.dart';
 import 'package:learnit/views/screens/home_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
