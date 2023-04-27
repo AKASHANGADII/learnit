@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learnit/controllers/test_data_controller.dart';
 import 'package:learnit/utils/neo_box_decoration.dart';
+import 'package:learnit/views/screens/quiz_screen.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:learnit/models/test_data.dart';
 
@@ -135,7 +136,7 @@ class HomeScreen extends StatelessWidget {
                 NewTestOptionButton(
                   label: "Parts of speech",
                   onPressed: () {
-                    //TODO:Navigate to test screen
+                    Get.to(QuizScreen());
                   },
                 ),
                 NewTestOptionButton(
