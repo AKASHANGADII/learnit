@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "170403956115",
+    "project_id": "learnit-d0064",
+    "storage_bucket": "learnit-d0064.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170403956115:android:7053088f52d621a504d466",
+        "android_client_info": {
+          "package_name": "com.hikify.learnit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170403956115-oungigs82ptdvun53ujsodtk7ruf2frl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3_onQiXGUM9-jB1h2G71yUtduspuzrRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170403956115-oungigs82ptdvun53ujsodtk7ruf2frl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
