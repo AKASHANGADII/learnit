@@ -45,10 +45,11 @@ class _QuizScreenState extends State<QuizScreen> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize:
-            Size(double.infinity, MediaQuery.of(context).size.height * 0.08),
+            Size(double.infinity, MediaQuery.of(context).size.height * 0.065),
         child: Center(
           child: Column(
             children: [
+              SizedBox(height: 10,),
               SafeArea(
                 child: Text(
                   "Learn IT",
@@ -69,7 +70,7 @@ class _QuizScreenState extends State<QuizScreen> {
             SizedBox(
               height: 20,
             ),
-            Text(questions[curIndex],style: GoogleFonts.poppins(fontWeight: FontWeight.w600,fontSize: 16),),
+            Text(questions[curIndex],style: GoogleFonts.poppins(fontWeight: FontWeight.w600,fontSize: 18),),
             SizedBox(
               height: 20,
             ),
@@ -163,10 +164,10 @@ class _QuizScreenState extends State<QuizScreen> {
                                   Text(
                                     values,
                                     style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                        TextStyle(fontWeight: FontWeight.bold,fontSize: 17),
                                   ),
                                   if (output[curIndex][values] != null)
-                                    Text(" : " + output[curIndex][values]),
+                                    Text(" : " + output[curIndex][values],style: TextStyle(fontSize: 17),),
                                 ],
                               ),
                             ),
@@ -190,13 +191,12 @@ class _QuizScreenState extends State<QuizScreen> {
                 }
               },
               child: Container(
+                decoration: neumorphicDecoration(10).copyWith(color: Colors.red),
+                margin: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
                 width: double.infinity,
-                color: Colors.yellow,
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("Next Question"),
-                  ),
+                child: Padding(
+                  padding: const EdgeInsets.all(14.0),
+                  child: Center(child: Text("NEXT QUESTION",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w700),)),
                 ),
               ),
             )

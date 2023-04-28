@@ -106,7 +106,7 @@ class _QuizScreen2State extends State<QuizScreen2> {
                   color: questions[curIndex].split(" ")[curOption]==val?Colors.lightBlue.withOpacity(0.6):Colors.transparent,
                   child: Padding(
                     padding: const EdgeInsets.all(3.0),
-                    child: Text(val,style: TextStyle(color:  questions[curIndex].split(" ")[curOption]==val?Colors.white:Colors.black),),
+                    child: Text(val,style: GoogleFonts.poppins(fontWeight: FontWeight.w600,fontSize: 16,color:  questions[curIndex].split(" ")[curOption]==val?Colors.white:Colors.black) ,),
                   ));}).toList(),
           ),
           SizedBox(height: 20,),
@@ -131,7 +131,7 @@ class _QuizScreen2State extends State<QuizScreen2> {
                     decoration: neumorphicDecoration(15),
                     child: Padding(
                       padding: const EdgeInsets.all(14.0),
-                      child: Center(child: Text(option)),
+                      child: Center(child: Text(option,style: TextStyle(fontSize: 18))),
                     ),
                   ),
                 );
@@ -161,7 +161,7 @@ class _QuizScreen2State extends State<QuizScreen2> {
               width: double.infinity,
               child: Padding(
                 padding: const EdgeInsets.all(14.0),
-                child: Center(child: Text("NEXT QUESTION",style: TextStyle(color: Colors.white),)),
+                child: Center(child: Text("NEXT QUESTION",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w700),)),
               ),
             ),
           )
