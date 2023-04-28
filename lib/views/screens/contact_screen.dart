@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tawk/flutter_tawk.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ContactScreen extends StatelessWidget {
   static const routeName = "/contact-screen";
@@ -9,9 +10,24 @@ class ContactScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Talk to Mentor"),
-        elevation: 0,
+      appBar: PreferredSize(
+        preferredSize:
+        Size(double.infinity, MediaQuery.of(context).size.height * 0.08),
+        child: Center(
+          child: Column(
+            children: [
+              SafeArea(
+                child: Text(
+                  "Learn IT",
+                  style: GoogleFonts.podkova(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 38),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 25, top: 25, bottom: 40, right: 25),
