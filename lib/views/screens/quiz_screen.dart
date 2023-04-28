@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:learnit/utils/data.dart';
 import 'package:learnit/utils/neo_box_decoration.dart';
 import 'package:learnit/views/screens/results_screen.dart';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 
 class QuizScreen extends StatefulWidget {
   static const routeName = '/quiz-screen';
@@ -21,6 +22,8 @@ class _QuizScreenState extends State<QuizScreen> {
   int curIndex = 0;
   List<String> questions = [];
   List<Map<String, dynamic>> output = [];
+  final StopWatchTimer _stopWatchTimer = StopWatchTimer();
+  final value = StopWatchTimer.getMilliSecFromSecond(60 * 60);
 
   List<T> getRandomGroup<T>(List<T> list, int n) {
     final random = Random();
@@ -37,6 +40,12 @@ class _QuizScreenState extends State<QuizScreen> {
   void initState() {
     questions = getRandomGroup(questionsData, 3);
     super.initState();
+  }
+
+  @override
+  void dispose() async {
+    super.dispose();
+    await _stopWatchTimer.dispose();  // Need to call dispose function.
   }
 
   @override
@@ -67,9 +76,32 @@ class _QuizScreenState extends State<QuizScreen> {
           children: [
             Divider(color: Colors.red,),
             SizedBox(
-              height: 20,
+              height: 5,
             ),
-            Text(questions[curIndex],style: GoogleFonts.poppins(fontWeight: FontWeight.w600,fontSize: 16),),
+            StreamBuilder<int>(
+              stream: _stopWatchTimer.rawTime,
+              initialData: 0,
+              builder: (context, snap) {
+                final value = snap.data;
+                final displayTime = StopWatchTimer.getDisplayTime(value!);
+                return Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Text(
+                        displayTime,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Helvetica',
+                            fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+            Text(questions[curIndex],style: GoogleFonts.poppins(fontWeight: FontWeight.w600,fontSize: 20),),
             SizedBox(
               height: 20,
             ),
@@ -163,10 +195,10 @@ class _QuizScreenState extends State<QuizScreen> {
                                   Text(
                                     values,
                                     style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                        TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                                   ),
                                   if (output[curIndex][values] != null)
-                                    Text(" : " + output[curIndex][values]),
+                                    Text(" : " + output[curIndex][values], style: GoogleFonts.poppins(fontSize: 18),),
                                 ],
                               ),
                             ),
@@ -190,12 +222,13 @@ class _QuizScreenState extends State<QuizScreen> {
                 }
               },
               child: Container(
+                margin: EdgeInsets.all(10),
                 width: double.infinity,
-                color: Colors.yellow,
+                decoration: neumorphicDecoration(15).copyWith(color: Colors.red),
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text("Next Question"),
+                    child: Text("Next Question", style: GoogleFonts.poppins(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),),
                   ),
                 ),
               ),

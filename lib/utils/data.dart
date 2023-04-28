@@ -1,4 +1,4 @@
-List<String> questionsData=[
+List<String> questionsData = [
   "She ate an apple",
   "He drank the water",
   "They read a book",
@@ -49,4 +49,23 @@ List<String> questionsData=[
   "He played the melodious guitar on that stage",
   "They cooked that delicious dinner for their guests",
   "We visited that historic museum in the city",
+];
+
+List<List<String>> pQuestionsList = [
+  ['Olá ', 'Hello'],
+  ['Amor', 'Love'],
+  ['Felicidade', 'Happiness'],
+  ['Gato', 'cat'],
+  ['Cão', 'Dog'],
+  ['Sim', 'Yes'],
+  ['Obrigado', 'Thank You'],
+  ['amanhã', 'Tomorrow'],
+  ['Ontem', 'Yesterday'],
+  ['Seguendo', 'Second'],
+  ['Ponte', 'Bridge'],
+  ['Rua', 'Street'],
+  ['Suco', 'Juice'],
+  ['Bolo', 'cake'],
+  ['bom', 'Good'],
+  ['frio', 'cold']
 ];
