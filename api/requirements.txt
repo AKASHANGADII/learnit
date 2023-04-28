@@ -1,0 +1,17 @@
+boto3
+botocore
+diffusers
+dtw
+firebase_admin
+Flask
+Flask_Cors
+librosa==0.10.0.post2
+lxml==4.9.2
+matplotlib==3.7.1
+nltk==3.8.1
+Pillow==9.5.0
+protobuf==4.22.3
+pydub==0.25.1
+Pyrebase==3.0.27
+Requests==2.29.0
+torch==2.0.0
